@@ -81,3 +81,23 @@ main {
 .product-list__item__footer span {
   font-size: 1.6rem;
 }
+
+.btn-category{
+  padding:5px 20px;
+  background-color: #f1f1f1;
+  border-radius: 9999px;
+  border: none;
+
+ 
+}
+.btn-category--active{
+  background-color:lightslategrey ;
+}
+
+.category-form{
+  display: flex;
+  justify-content: space-between;
+  margin: 10px;
+}
+
+
