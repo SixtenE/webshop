@@ -77,3 +77,17 @@ const categoryComponent = (category) => `
 
 createCategoryButtons();
 
+const sortProducts = (order) => {
+  if (order === "price Ascending") {
+      products.sort((a, b) => a.price - b.price);
+  } else if (order === "price Descending") {
+      products.sort((a, b) => b.price - a.price);
+  }
+  displayProducts("All"); 
+}
+
+document.getElementById("sort").addEventListener("change", (e) => {
+  sortProducts(e.target.value);
+});
+
+await fetchProducts();
