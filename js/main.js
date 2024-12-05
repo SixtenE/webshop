@@ -1,19 +1,31 @@
 //https://fakestoreapi.com/products
 
+let products = [];
+
 const fetchProducts = async () => {
     try {
-        const response = await(await fetch("https://fakestoreapi.com/products"
+        products = await(await fetch("https://fakestoreapi.com/products"
         )).json();
-        
-        const productHTML = response.map(item => (productCardComponent(item))).join("");
-
-        document.querySelector(".product-list").innerHTML = productHTML
-    
     }
     catch (error) 
     {
         console.error(error);
     }
+}
+
+const displayProducts = (category) => {
+  console.log(category);
+  let productHTML = "";
+
+  if (category === "All"){
+    productHTML = products.map(item => (productCardComponent(item))).join("");
+  }else {
+    productHTML = products.filter(item => item.category == category).map(item => (productCardComponent(item))).join("");
+  }
+  
+  document.querySelector(".product-list").innerHTML = productHTML
+
+
 }
 
 const productCardComponent = (product) => `
@@ -31,4 +43,37 @@ const productCardComponent = (product) => `
         </article>
 `
 
-fetchProducts();
+await fetchProducts();
+displayProducts("All");
+
+const createCategoryButtons = () => {
+  const btnContainer = document.querySelector(".btn-container");
+
+  const newArray = products.reduce((accumulator, product) => {
+
+   if (!accumulator.includes(product.category)) {
+    accumulator.push(product.category); 
+   }
+   return (accumulator);
+  },[]);
+
+  const btnHTML = newArray.map(category => categoryComponent(category)).join("");
+  btnContainer.innerHTML = btnHTML;
+  const buttons = document.querySelectorAll(".btn-category");
+  buttons.forEach(button => button.addEventListener('click', e => {
+    displayProducts(e.target.dataset.category);
+
+  }));
+
+}
+
+
+const categoryComponent = (category) => `
+ <label for="${category}" class="btn-category">
+ ${category}
+ <input type="radio" class="radio__btn" name="radio-btn" id="${category}" data-category="${category}"></input>
+ </label>
+`
+
+createCategoryButtons();
+
