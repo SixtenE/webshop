@@ -50,7 +50,6 @@ main {
   flex-direction: column;
   padding: 1rem;
 
-  border: 2px solid red;
 }
 
 .product-list__item img {
@@ -99,5 +98,32 @@ main {
   justify-content: space-between;
   margin: 10px;
 }
+.shopping-cart__headers {
+  font-weight: 700;
+  font-size: 2rem;
+  background-color: #c1c1c1;
+}
 
+.shopping-cart__table {
+  margin: 2rem;
 
+}
+.shopping-cart__product-cell {
+  display: flex;
+  align-items: center;
+}
+.shopping-cart__total-row
+{
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+@media (min-width:1020px) {
+  .product-list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 2rem;
+    justify-content: center;
+  }
+  
+}
