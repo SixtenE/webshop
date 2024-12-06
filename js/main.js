@@ -1,6 +1,7 @@
 //https://fakestoreapi.com/products
 
 let products = [];
+let currentCategory = "All";
 
 const fetchProducts = async () => {
     try {
@@ -14,7 +15,6 @@ const fetchProducts = async () => {
 }
 
 const displayProducts = (category) => {
-  console.log(category);
   let productHTML = "";
 
   if (category === "All"){
@@ -62,7 +62,7 @@ const createCategoryButtons = () => {
   const buttons = document.querySelectorAll(".btn-category");
   buttons.forEach(button => button.addEventListener('click', e => {
     displayProducts(e.target.dataset.category);
-
+    currentCategory = e.target.dataset.category;
   }));
 
 }
@@ -78,12 +78,22 @@ const categoryComponent = (category) => `
 createCategoryButtons();
 
 const sortProducts = (order) => {
-  if (order === "price Ascending") {
+  switch (order) {
+    case "Price Ascending":
       products.sort((a, b) => a.price - b.price);
-  } else if (order === "price Descending") {
+      break;
+    case "Price Descending":
       products.sort((a, b) => b.price - a.price);
+      break;
+    case "Rating":
+      products.sort((a,b) => b.rating.rate - a.rating.rate)
+      break;
+    case "Alphabetically":
+      products.sort((a,b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+      break;
   }
-  displayProducts("All"); 
+
+  displayProducts(currentCategory); 
 }
 
 document.getElementById("sort").addEventListener("change", (e) => {
