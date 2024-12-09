@@ -1,123 +1,161 @@
+@import "preflight.css";
+
 :root {
   --background-color: #ffffff;
   --primary: #a3a3a3;
-  --secondary: #e5e5e5;
+  --secondary: #f5f5f5;
   --text-primary: #0a0a0a;
   --text-secondary: #262626;
   --brand: #0ea5e9;
 }
 
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
-html {
-  font-size: 62.5%;
+body {
   font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
 }
 
-header {
-  width: 100%;
-  height: 100px;
-  margin: 0 auto;
+.container {
+  max-width: 1024px;
+
   display: flex;
-  flex-direction: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  gap: 5rem;
+
+  margin: 0 auto;
+}
+
+/*HEADER STYLES*/
+.header {
+  width: 100%;
+
+  display: flex;
   align-items: center;
-  padding: 2rem;
-  background-color: #777777;
+  justify-content: space-between;
+  padding: 0rem 0;
   position: sticky;
   top: 0;
+  z-index: 10;
+
+  border: 2px solid red;
 }
 
-body {
-  background-color: gainsboro;
+.header__menu {
+  display: flex;
+  gap: 0.5rem;
 }
 
-.header__logo,
-.header__shoppingcart {
-  width: 4rem;
+.header__search-form {
+  width: 300px;
+
+  position: relative;
 }
 
+.header__search {
+  width: 100%;
+  height: 100%;
+
+  padding-left: 1rem;
+
+  background-color: var(--secondary);
+  border-radius: 9999px;
+}
+
+.header__search-icon {
+  width: fit-content;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+
+  stroke: var(--text-secondary);
+}
+
+.header__cart-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+
+  border-radius: 9999px;
+}
+
+/*PRODUCT LIST STYLES*/
 main {
   width: 100%;
 
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
 }
 
-.product-list {
-  padding: 2rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  justify-content: center;
-  gap: 2rem;
-}
-
-.product-list__item {
-  width: 100%;
-  background-color: white;
-  border-radius: 2rem;
-
+.category-form__form {
   display: flex;
-  flex-direction: column;
-  padding: 1rem;
 }
 
-.product-list__item__image {
-  margin: 0 auto;
-  width: 200px;
-  height: auto;
-  object-fit: contain;
-  max-height: 200px;
-}
+.category-form__form label {
+  padding: 0.5rem 1rem;
 
-.product-list__item__footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.product-list__item__title {
-  margin-top: auto;
-  font-size: 2rem;
-}
-
-.product-list__item__footer button {
-  padding: 0.5rem 2rem;
-
-  background-color: #777777;
+  background-color: #f5f5f5;
   border-radius: 9999px;
-  color: white;
-  border: none;
   cursor: pointer;
 }
 
-.product-list__item__footer span {
-  font-size: 1.6rem;
-}
-
-.btn-category {
-  padding: 5px 20px;
-  background-color: #f1f1f1;
-  border-radius: 9999px;
-  border: none;
-}
-.radio__btn {
+.category-form__form label input[type="radio"] {
   display: none;
 }
 
-.btn-category:checked {
-  background-color: lightslategrey;
+.category-form__form label:has(input[type="radio"]:checked) {
+  background-color: #e5e5e5;
+}
+
+.product-list {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+
+  border: 2px solid red;
+}
+
+.product-list__item__image-container {
+  padding: 3rem 4rem;
+
+  background-color: var(--secondary);
+  border-radius: 1rem;
+}
+
+.product-list__item__image {
+  mix-blend-mode: multiply;
 }
 
 .category-form {
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
-  margin: 10px;
+
+  border: 2px solid red;
 }
+
+/*SORT FORM STYLES*/
+.sort-form {
+  display: flex;
+  gap: 1rem;
+}
+
+.sort-form select {
+  appearance: none;
+
+  display: block;
+
+  background-color: var(--secondary);
+  border-radius: 9999px;
+}
+
 .shopping-cart__headers {
   font-weight: 700;
   font-size: 2rem;
@@ -136,10 +174,10 @@ main {
   font-size: 2rem;
 }
 
-@media (min-width: 1020px) {
+@media (prefers-color-scheme: dark) {
+  :root {
+  }
   .product-list {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    justify-content: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
