@@ -120,6 +120,15 @@ main {
   cursor: pointer;
 }
 
+.product-list__item__footer button:hover{
+  background-color: var(--primary);
+}
+
+.product-list__item__footer button:active{
+  transform: scale(0.95); 
+ 
+}
+
 .product-list__item__footer span {
   font-size: 1.6rem;
 }
