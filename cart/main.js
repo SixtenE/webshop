@@ -29,13 +29,44 @@ const populateProductTable = () => {
         </tr>`
 
     productTable.innerHTML = tableHTML;
+    const amountCells = productTable.querySelectorAll(".shopping-cart__amount-cell")
+    amountCells.forEach(cell => {
+        cell.addEventListener("input", (e) => updateProductAmount(e))
+    })
+}
 
+const updateProductAmount = (event) => {
+    const productName = event.target.closest(".shopping-cart__table-row").dataset.item
+    const newAmount =  event.target.value;
 
+    /* 
+    Option 1
+
+    products = products.map(product => {
+        if(product.name === productName) product.amount = newAmount
+        return product
+    }) 
+    */
+
+    //Option 2
+    products.forEach(product => {
+        if(product.name === productName) product.amount = newAmount
+    })
+
+    updateProductTable(productName)
+}
+
+const updateProductTable = (productName) => {
+    let updatedRow;
+    productTable.querySelectorAll(".shopping-cart__table-row").forEach(row => {
+        if(row.dataset.item == productName) updatedRow = row;
+    })
+    console.log(updatedRow)
 }
 
 const createProductRow = (product) => {
     let productHTML = `
-        <tr class="shopping-cart__table-row">
+        <tr class="shopping-cart__table-row" data-item="${product.name}">
           <td class="shopping-cart__product-cell">
             <img
               class="shopping-cart__product-images"
@@ -44,7 +75,7 @@ const createProductRow = (product) => {
               width="100px"
               height="auto"
             />
-            <span>${product.name}</span>
+            <span class="shopping-cart__product-name">${product.name}</span>
           </td>
           <td>$${product.price}</td>
           <td>
