@@ -12,7 +12,12 @@
       <header class="header">
         <div>
           <a href="#logo" class="header__logo">
-            <img src="https://placehold.co/175x75" alt="logo" />
+            <img
+              src="https://placehold.co/150x50"
+              alt="logo"
+              width="150px"
+              height="50px"
+            />
           </a>
         </div>
         <div class="header__menu">
@@ -43,7 +48,6 @@
               height="24"
               viewBox="0 0 24 24"
               fill="none"
-              stroke="currentColor"
               stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
@@ -62,8 +66,8 @@
           </a>
         </div>
       </header>
-      <aside>
-        <form class="filter-form__form">
+      <section class="filters">
+        <form class="filter-form">
           <label for="all">
             <input id="all" type="radio" name="filter" checked />
             <span>All</span>
@@ -85,73 +89,91 @@
             <option>Rating</option>
             <option>Name</option>
           </select>
+          <span class="sort-form__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-up"
+            >
+              <path d="m3 16 4 4 4-4" />
+              <path d="M7 20V4" />
+              <path d="m21 8-4-4-4 4" />
+              <path d="M17 4v16" />
+            </svg>
+          </span>
         </form>
-      </aside>
+      </section>
       <main>
-        <section class="product-list">
-          <article class="product-list__item">
-            <div class="product-list__item__image-container">
+        <section class="products">
+          <article class="product-card">
+            <div class="product-card__image-container">
               <img
-                class="product-list__item__image"
+                class="product-card__image"
                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
                 alt="product photo"
               />
             </div>
-            <!-- <h3 class="product-list__item__title">
-            WD 2TB Elements Portable External Hard Drive - USB 3.0
-          </h3>
-          <div class="product-list__item__footer">
-            <button class="product-list__item__button">Köp</button>
-            <span class="product-list__item__price">64</span>
-          </div> -->
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
           </article>
-          <article class="product-list__item">
-            <div class="product-list__item__image-container">
+          <article class="product-card">
+            <div class="product-card__image-container">
               <img
-                class="product-list__item__image"
+                class="product-card__image"
                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
                 alt="product photo"
               />
             </div>
-            <!-- <h3 class="product-list__item__title">
-            WD 2TB Elements Portable External Hard Drive - USB 3.0
-          </h3>
-          <div class="product-list__item__footer">
-            <button class="product-list__item__button">Köp</button>
-            <span class="product-list__item__price">64</span>
-          </div> -->
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
           </article>
-          <article class="product-list__item">
-            <div class="product-list__item__image-container">
+          <article class="product-card">
+            <div class="product-card__image-container">
               <img
-                class="product-list__item__image"
+                class="product-card__image"
                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
                 alt="product photo"
               />
             </div>
-            <!-- <h3 class="product-list__item__title">
-            WD 2TB Elements Portable External Hard Drive - USB 3.0
-          </h3>
-          <div class="product-list__item__footer">
-            <button class="product-list__item__button">Köp</button>
-            <span class="product-list__item__price">64</span>
-          </div> -->
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
           </article>
-          <article class="product-list__item">
-            <div class="product-list__item__image-container">
+          <article class="product-card">
+            <div class="product-card__image-container">
               <img
-                class="product-list__item__image"
+                class="product-card__image"
                 src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
                 alt="product photo"
               />
             </div>
-            <!-- <h3 class="product-list__item__title">
-            WD 2TB Elements Portable External Hard Drive - USB 3.0
-          </h3>
-          <div class="product-list__item__footer">
-            <button class="product-list__item__button">Köp</button>
-            <span class="product-list__item__price">64</span>
-          </div> -->
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
           </article>
         </section>
       </main>
