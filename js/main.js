@@ -1,6 +1,6 @@
 //https://fakestoreapi.com/products
 
-let products = [];
+ let products = [];
 let currentCategory = "All";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
@@ -42,7 +42,10 @@ const productCardComponent = (product) => `
             <span class="product-list__item__price">$${product.price}</span>
           </div>
         </article>
-`
+`;
+
+
+
 
 
 const createCategoryButtons = () => {

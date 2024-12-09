@@ -39,6 +39,7 @@ body {
 .header__logo,
 .header__shoppingcart {
   width: 4rem;
+  
 }
 
 .header__shoppingcart:active{
@@ -120,6 +121,15 @@ main {
   border: none;
   cursor: pointer;
 }
+.product-list__item__footer button:hover{
+  background-color: var(--primary);
+}
+
+.product-list__item__footer button:active{
+  transform: scale(0.95); 
+ 
+}
+
 
 .product-list__item__footer button:hover{
   background-color: var(--primary);
