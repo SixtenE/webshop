@@ -41,6 +41,31 @@ body {
   width: 4rem;
 }
 
+.header__shoppingcart:active{
+  transform: scale(0.90); 
+  
+}
+.container-cart{
+  position: relative;
+}
+
+.cart-count{
+  background-color: red;
+  width: 15px;
+  height: 15px;
+  font-weight: 700;
+  border-radius: 50%;
+  font-size: 1rem;
+ 
+  padding: 2px;
+  text-align: center;
+  color: #ffffff;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+}
+
+
 main {
   width: 100%;
 
