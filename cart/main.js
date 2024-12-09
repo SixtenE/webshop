@@ -54,7 +54,7 @@ const updateProductAmount = (event) => {
         if(newAmount == 0) {
           products.splice(index, 1)
         }
-        else product.quantity = newAmount
+        else product.quantity = Number(newAmount)
       }
     })
 
@@ -90,7 +90,6 @@ const updateProductTable = (productName) => {
 }
 
 const saveToLocalStorage = (newCart) => {
-  console.log(newCart)
   localStorage.setItem("cart", JSON.stringify(newCart)); 
 }
 
