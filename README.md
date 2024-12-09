@@ -12,14 +12,14 @@
 # Funktioner vi skulle vilja få med
 
 ## Shopsidan
-- [ ] Sökruta som filtrerar på textinnehåll
-- [ ] Lägga till produkter till kundkorgen - Array av objekt - Lägg till i localstorage
+- [ ] Sökruta som filtrerar på textinnehåll - Elin
+- [ ] Lägga till produkter till kundkorgen - Array av objekt - Lägg till i localstorage - Fares
 - [ ] Laddningssymbol under fetch
-- [ ] Modal när man klickar på produkt
+- [ ] Modal när man klickar på produkt - Stella
 
 ## Kundvagnen 
-- [ ] Ladda in från localstorage på laddning av sidan
-- [ ] Kunna ta bort föremål från kundvagnen
+- [ ] Ladda in från localstorage på laddning av sidan - Andreas
+- [ ] Kunna ta bort föremål från kundvagnen - Andreas
 
 - [ ] Custom logotyp
 - [ ] Animationer
