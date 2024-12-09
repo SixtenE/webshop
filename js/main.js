@@ -101,3 +101,51 @@ document.getElementById("sort").addEventListener("change", (e) => {
 });
 
 await fetchProducts();
+
+function displayProductModal() {
+  
+  const modalBackground = document.querySelector(".product-modal__background");
+  const productList = document.querySelector(".product-list");
+
+  productList.addEventListener('click', (e) => {
+
+    const productItem = e.target.closest(".product-list__item");
+    if (!productItem) return;
+
+    const productIndex = Array.from(productList.children).indexOf(
+      productItem
+    );
+    const product = products[productIndex];
+
+    modalBackground.style.visibility = "visible";
+    modalBackground.style.opacity = "1";
+
+    modalBackground.innerHTML = `
+        <article class="product-modal__container">
+          <img src="${product.image}" alt="${product.title}">
+          <h3 class="product-modal__title">${product.title}</h3>
+          <p class="product-modal__description">${product.description}</p>
+          <div class="product-modal__rating">
+            <p><b>Rate:</b>${product.rating.rate}</p>
+            <p><b>Count:</b>${product.rating.count}</p>
+          </div>
+          <div class="product-list__item__footer">
+            <button class="product-modal__item__button">Köp</button>
+            <span class="product-modal__item__price">$${product.price}</span>
+          </div>
+          <button class="product-modal__exit__button">Exit</button>
+        </article>
+    `;
+
+    const exitButton = modalBackground.querySelector(".product-modal__exit__button");
+
+    exitButton.addEventListener("click", () => {
+      modalBackground.style.visibility = "hidden";
+      modalBackground.style.opacity = "0";
+    });
+
+  });
+
+};
+
+displayProductModal();
