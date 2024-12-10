@@ -77,18 +77,14 @@
             <input id="jewelry" type="radio" name="filter" />
             <span> Jewelry </span>
           </label>
-          <label for="electronics">
-            <input id="electronics" type="radio" name="filter" />
-            <span> Electronics </span>
-          </label>
         </form>
         <form class="sort-form">
           <select id="sort">
             <option selected>Sort by</option>
-            <option>Price asc. &uarr;</option>
-            <option>Price desc. &darr;</option>
-            <option>Rating</option>
-            <option>Name</option>
+            <option data-sortType="price-asc">Price asc. &uarr;</option>
+            <option data-sortType="price-desc">Price desc. &darr;</option>
+            <option data-sortType="rating">Rating</option>
+            <option data-sortType="name">Name</option>
           </select>
           <span class="sort-form__icon">
             <svg
@@ -112,70 +108,6 @@
       </section>
       <main>
         <section class="products">
-          <article class="product-card">
-            <div class="product-card__image-container">
-              <img
-                class="product-card__image"
-                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-                alt="product photo"
-              />
-            </div>
-            <div class="product-card__content">
-              <p class="product-card__title">
-                WD 2TB Elements Portable External Hard Drive - USB 3.0
-              </p>
-              <p class="product-card__price">$64.99</p>
-            </div>
-            <button class="product-card__button">Add to cart</button>
-          </article>
-          <article class="product-card">
-            <div class="product-card__image-container">
-              <img
-                class="product-card__image"
-                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-                alt="product photo"
-              />
-            </div>
-            <div class="product-card__content">
-              <p class="product-card__title">
-                WD 2TB Elements Portable External Hard Drive - USB 3.0
-              </p>
-              <p class="product-card__price">$64.99</p>
-            </div>
-            <button class="product-card__button">Add to cart</button>
-          </article>
-          <article class="product-card">
-            <div class="product-card__image-container">
-              <img
-                class="product-card__image"
-                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-                alt="product photo"
-              />
-            </div>
-            <div class="product-card__content">
-              <p class="product-card__title">
-                WD 2TB Elements Portable External Hard Drive - USB 3.0
-              </p>
-              <p class="product-card__price">$64.99</p>
-            </div>
-            <button class="product-card__button">Add to cart</button>
-          </article>
-          <article class="product-card">
-            <div class="product-card__image-container">
-              <img
-                class="product-card__image"
-                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
-                alt="product photo"
-              />
-            </div>
-            <div class="product-card__content">
-              <p class="product-card__title">
-                WD 2TB Elements Portable External Hard Drive - USB 3.0
-              </p>
-              <p class="product-card__price">$64.99</p>
-            </div>
-            <button class="product-card__button">Add to cart</button>
-          </article>
         </section>
       </main>
     </div>
