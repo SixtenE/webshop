@@ -138,11 +138,11 @@ document.addEventListener("click", (e) => {
 function displayProductModal() {
   
   const modalBackground = document.querySelector(".product-modal__background");
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".products");
 
   productList.addEventListener('click', (e) => {
 
-    const productItem = e.target.closest(".product-list__item");
+    const productItem = e.target.closest(".product-card");
     if (!productItem) return;
 
     const productIndex = Array.from(productList.children).indexOf(
