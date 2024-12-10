@@ -132,11 +132,17 @@ function displayProductModal() {
   productList.addEventListener('click', (e) => {
 
     const productItem = e.target.closest(".product-list__item");
-    if (!productItem) return;
+    if (!productItem) return; 
+  
+    const productListItemButton = e.target.closest(".product-list__item__button")
+    if (productListItemButton) return;
+    
+
 
     const productIndex = Array.from(productList.children).indexOf(
       productItem
     );
+
     const product = products[productIndex];
 
     modalBackground.style.visibility = "visible";
@@ -144,6 +150,7 @@ function displayProductModal() {
 
     modalBackground.innerHTML = `
         <article class="product-modal__container">
+          <button class="product-modal__exit__button">Exit</button>
           <img src="${product.image}" alt="${product.title}">
           <h3 class="product-modal__title">${product.title}</h3>
           <p class="product-modal__description">${product.description}</p>
@@ -155,7 +162,6 @@ function displayProductModal() {
             <button class="product-modal__item__button">Köp</button>
             <span class="product-modal__item__price">$${product.price}</span>
           </div>
-          <button class="product-modal__exit__button">Exit</button>
         </article>
     `;
 
