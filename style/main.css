@@ -217,6 +217,24 @@ main {
 
   font-size: 0.8rem;
 }
+.product-list__item__footer button:hover{
+  background-color: var(--primary);
+}
+
+.product-list__item__footer button:active{
+  transform: scale(0.95); 
+ 
+}
+
+
+.product-list__item__footer button:hover{
+  background-color: var(--primary);
+}
+
+.product-list__item__footer button:active{
+  transform: scale(0.95); 
+ 
+}
 
 .product-card__price {
   width: fit-content;
@@ -319,4 +337,5 @@ main {
   .products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+
 }
