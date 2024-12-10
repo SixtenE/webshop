@@ -81,7 +81,7 @@ const updateProductAmount = (event) => {
       }
     })
     if(products.length == 0) {
-      productTable.querySelector("tbody").innerHTML= `${tableHeaderHTML} ${emptyShoppingcartHTML}`
+      productTable.querySelector("tbody").innerHTML= `${tableHeaderHTML()} ${emptyShoppingcartHTML()}`
     }
     else if(newAmount == 0)
       { productTable.querySelector("tbody").removeChild(productRow); 
