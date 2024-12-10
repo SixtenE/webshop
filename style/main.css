@@ -85,19 +85,20 @@ body {
 }
 
 .cart-count {
-  background-color: red;
-  width: 15px;
-  height: 15px;
-  font-weight: 700;
-  border-radius: 50%;
-  font-size: 1rem;
+  width: 1rem;
+  height: 1rem;
 
+  position: absolute;
   padding: 2px;
   text-align: center;
-  color: #ffffff;
-  position: absolute;
   right: 0px;
   top: 0px;
+
+  border-radius: 9999px;
+  /*TODO CSS VARIABLE*/
+  background-color: #ef4444;
+  color: #ffffff;
+  font-size: 0.6rem;
 }
 
 /*FILTERS STYLES*/
@@ -111,6 +112,7 @@ body {
   width: 100%;
 
   display: flex;
+  flex-wrap: wrap;
   gap: 0.5rem;
 }
 
@@ -217,23 +219,20 @@ main {
 
   font-size: 0.8rem;
 }
-.product-list__item__footer button:hover{
+.product-list__item__footer button:hover {
   background-color: var(--primary);
 }
 
-.product-list__item__footer button:active{
-  transform: scale(0.95); 
- 
+.product-list__item__footer button:active {
+  transform: scale(0.95);
 }
 
-
-.product-list__item__footer button:hover{
+.product-list__item__footer button:hover {
   background-color: var(--primary);
 }
 
-.product-list__item__footer button:active{
-  transform: scale(0.95); 
- 
+.product-list__item__footer button:active {
+  transform: scale(0.95);
 }
 
 .product-card__price {
@@ -331,11 +330,7 @@ main {
   .header__search-form {
     width: 300px;
   }
-  .filters {
-    flex-direction: row;
-  }
   .products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
-
 }
