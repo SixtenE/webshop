@@ -64,7 +64,7 @@ const createCategoryButtons = () => {
   },[]);
   let btnHTML = `
     <label for="all">
-            <input id="all" type="radio" name="filter" checked />
+            <input id="all" class="category-button" type="radio" name="filter" data-category="All" checked />
             <span>All</span>
           </label>
           `
@@ -73,6 +73,7 @@ const createCategoryButtons = () => {
   const buttons = document.querySelectorAll(".category-button");
   buttons.forEach(button => button.addEventListener('click', e => {
     displayProducts(e.target.dataset.category);
+    console.log(e.target.dataset.category)
     currentCategory = e.target.dataset.category;
   }));
 
