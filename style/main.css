@@ -215,6 +215,11 @@ main {
   width: 20vw;
 }
 
+.shopping-cart__empty-text {
+  
+
+}
+
 @media (min-width: 1020px) {
   .product-list {
     display: grid;
