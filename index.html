@@ -5,40 +5,180 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="js/main.js" type="module"></script>
-    <link rel="stylesheet" href="./style/base.css" />
+    <link rel="stylesheet" href="./style/main.css" />
   </head>
   <body>
-    <header>
-      <a href="/"
-        ><img src="./img/logo.svg" alt="logo" class="header__logo"
-      /></a>
-      <h1 class="header__title">Webshop</h1>
-      <div class="container-cart">
-        <a href="/cart"
-          ><img
-            src="./img/shoppingcart.svg"
-            alt="Shopping cart icon"
-            class="header__shoppingcart"
-        /></a>
-        <span class="cart-count">0</span>
-      </div>
+    <div class="container">
+      <header class="header">
+        <div>
+          <a href="#logo" class="header__logo">
+            <img
+              src="https://placehold.co/150x50"
+              alt="logo"
+              width="150px"
+              height="50px"
+            />
+          </a>
+        </div>
+        <div class="header__menu">
+          <form class="header__search-form">
+            <input type="text" class="header__search" placeholder="Search" />
+            <span class="header__search-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </span>
+          </form>
 
-    </header>
-    <main>
-      <section>
-        <div class="category-form">
-          <div class="btn-container"></div>
+          <a href="/cart" class="header__cart-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-basket"
+            >
+              <path d="m15 11-1 9" />
+              <path d="m19 11-4-7" />
+              <path d="M2 11h20" />
+              <path
+                d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"
+              />
+              <path d="M4.5 15.5h15" />
+              <path d="m5 11 4-7" />
+              <path d="m9 11 1 9" />
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </header>
+      <section class="filters">
+        <form class="filter-form">
+          <label for="all">
+            <input id="all" type="radio" name="filter" checked />
+            <span>All</span>
+          </label>
+          <label for="jewelry">
+            <input id="jewelry" type="radio" name="filter" />
+            <span> Jewelry </span>
+          </label>
+          <label for="electronics">
+            <input id="electronics" type="radio" name="filter" />
+            <span> Electronics </span>
+          </label>
+        </form>
+        <form class="sort-form">
           <select id="sort">
-            <option>Sort by: </option>
-            <option>Price Ascending</option>
-            <option>Price Descending</option>
+            <option selected>Sort by</option>
+            <option>Price asc. &uarr;</option>
+            <option>Price desc. &darr;</option>
             <option>Rating</option>
-            <option>Alphabetically</option>
-            </select>
-          </div>
-          </section>
-      <section class="product-list"></section>
-    </main>
+            <option>Name</option>
+          </select>
+          <span class="sort-form__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-up"
+            >
+              <path d="m3 16 4 4 4-4" />
+              <path d="M7 20V4" />
+              <path d="m21 8-4-4-4 4" />
+              <path d="M17 4v16" />
+            </svg>
+          </span>
+        </form>
+      </section>
+      <main>
+        <section class="products">
+          <article class="product-card">
+            <div class="product-card__image-container">
+              <img
+                class="product-card__image"
+                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+                alt="product photo"
+              />
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__image-container">
+              <img
+                class="product-card__image"
+                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+                alt="product photo"
+              />
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__image-container">
+              <img
+                class="product-card__image"
+                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+                alt="product photo"
+              />
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
+          </article>
+          <article class="product-card">
+            <div class="product-card__image-container">
+              <img
+                class="product-card__image"
+                src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg"
+                alt="product photo"
+              />
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__title">
+                WD 2TB Elements Portable External Hard Drive - USB 3.0
+              </p>
+              <p class="product-card__price">$64.99</p>
+            </div>
+            <button class="product-card__button">Add to cart</button>
+          </article>
+        </section>
+      </main>
+    </div>
     <div class="product-modal__background"></div>
   </body>
 </html>
