@@ -35,8 +35,25 @@ const populateProductTable = () => {
     const amountCells = productTable.querySelectorAll(".shopping-cart__amount")
     amountCells.forEach(cell => {
         cell.addEventListener("input", (e) => updateProductAmount(e))
-    })
-}
+    });
+    const removeButtons = productTable.querySelectorAll(".shopping-cart__remove-button"); 
+    removeButtons.forEach(button => { 
+        button.addEventListener("click", (e) => removeProduct(e)); 
+    }); 
+} 
+
+const removeProduct = (event) => { 
+  const productRow = event.target.closest(".shopping-cart__table-row"); 
+  const productName = productRow.dataset.item; 
+
+  products = products.filter(product => product.title !== productName); 
+
+  
+  saveToLocalStorage(products); 
+  updateTotalAmount(); 
+  populateProductTable();
+    
+} 
 
 const tableHeaderHTML = () => {
   return `
@@ -139,6 +156,8 @@ const createProductRow = (product) => {
           <td class="shopping-cart__product-price">$${product.price}</td>
           <td>
             <input type="number" class="shopping-cart__amount" value="${product.quantity}"/>
+            <button class="shopping-cart__remove-button">Ta bort</button> 
+
           </td>
           <td class="shopping-cart__subtotal">$${(product.price * product.quantity).toFixed(2)}</td>
         </tr>
