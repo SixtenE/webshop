@@ -156,8 +156,9 @@ const createProductRow = (product) => {
           <td class="shopping-cart__product-price">$${product.price}</td>
           <td>
             <input type="number" class="shopping-cart__amount" value="${product.quantity}"/>
-            <button class="shopping-cart__remove-button">Ta bort</button> 
-
+            
+            <img src="../img/trash.svg" alt="Ta bort" class="shopping-cart__remove-button">
+             
           </td>
           <td class="shopping-cart__subtotal">$${(product.price * product.quantity).toFixed(2)}</td>
         </tr>
