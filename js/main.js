@@ -140,10 +140,14 @@ function displayProductModal() {
   const modalBackground = document.querySelector(".product-modal__background");
   const productList = document.querySelector(".products");
 
+
   productList.addEventListener('click', (e) => {
 
     const productItem = e.target.closest(".product-card");
     if (!productItem) return;
+
+    const productModalBuyButton = e.target.closest(".product-modal__item__button");
+    if (productModalBuyButton) return;
 
     const productIndex = Array.from(productList.children).indexOf(
       productItem
