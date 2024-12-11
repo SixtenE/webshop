@@ -1,33 +1,31 @@
 //https://fakestoreapi.com/products
 
- let products = [];
+let products = [];
 let currentCategory = "All";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const fetchProducts = async () => {
-    try {
-        products = await(await fetch("https://fakestoreapi.com/products"
-        )).json();
-    }
-    catch (error) 
-    {
-        console.error(error);
-    }
-}
+  try {
+    products = await (await fetch("https://fakestoreapi.com/products")).json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const displayProducts = (category) => {
   let productHTML = "";
 
-  if (category === "All"){
-    productHTML = products.map(item => (productCardComponent(item))).join("");
-  }else {
-    productHTML = products.filter(item => item.category == category).map(item => (productCardComponent(item))).join("");
+  if (category === "All") {
+    productHTML = products.map((item) => productCardComponent(item)).join("");
+  } else {
+    productHTML = products
+      .filter((item) => item.category == category)
+      .map((item) => productCardComponent(item))
+      .join("");
   }
-  
-  document.querySelector(".products").innerHTML = productHTML
 
-
-}
+  document.querySelector(".products").innerHTML = productHTML;
+};
 
 const productCardComponent = (product) => `
         <article class="product-card">
@@ -40,45 +38,46 @@ const productCardComponent = (product) => `
             </div>
             <div class="product-card__content">
               <p class="product-card__title">
-              ${product.title}
+              ${
+                product.title.trim().length > 32
+                  ? `${product.title.substring(0, 32).trim()}...`
+                  : product.title.trim()
+              }
               </p>
               <p class="product-card__price">$${product.price}</p>
             </div>
-            <button class="product-card__button" data-id="${product.id}">Add to cart</button>
+            <button class="product-card__button" data-id="${
+              product.id
+            }">Add to cart</button>
           </article>
 `;
-
-
-
-
 
 const createCategoryButtons = () => {
   const btnContainer = document.querySelector(".filter-form");
 
   const newArray = products.reduce((accumulator, product) => {
-
-   if (!accumulator.includes(product.category)) {
-    accumulator.push(product.category); 
-   }
-   return (accumulator);
-  },[]);
+    if (!accumulator.includes(product.category)) {
+      accumulator.push(product.category);
+    }
+    return accumulator;
+  }, []);
   let btnHTML = `
     <label for="all">
             <input id="all" class="category-button" type="radio" name="filter" data-category="All" checked />
             <span>All</span>
           </label>
-          `
-  btnHTML += newArray.map(category => categoryComponent(category)).join("");
+          `;
+  btnHTML += newArray.map((category) => categoryComponent(category)).join("");
   btnContainer.innerHTML = btnHTML;
   const buttons = document.querySelectorAll(".category-button");
-  buttons.forEach(button => button.addEventListener('click', e => {
-    displayProducts(e.target.dataset.category);
-    console.log(e.target.dataset.category)
-    currentCategory = e.target.dataset.category;
-  }));
-
-}
-
+  buttons.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      displayProducts(e.target.dataset.category);
+      console.log(e.target.dataset.category);
+      currentCategory = e.target.dataset.category;
+    })
+  );
+};
 
 const categoryComponent = (category) => `
 
@@ -86,7 +85,7 @@ const categoryComponent = (category) => `
             <input  id="${category}" type="radio" class="category-button" name="filter" data-category="${category}"/>
             <span>  ${category} </span>
           </label>
-`
+`;
 
 const sortProducts = (order) => {
   switch (order) {
@@ -97,15 +96,17 @@ const sortProducts = (order) => {
       products.sort((a, b) => b.price - a.price);
       break;
     case "rating":
-      products.sort((a,b) => b.rating.rate - a.rating.rate)
+      products.sort((a, b) => b.rating.rate - a.rating.rate);
       break;
     case "name":
-      products.sort((a,b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+      products.sort((a, b) =>
+        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+      );
       break;
   }
 
-  displayProducts(currentCategory); 
-}
+  displayProducts(currentCategory);
+};
 
 document.getElementById("sort").addEventListener("change", (e) => {
   sortProducts(e.target.selectedOptions[0].dataset.sorttype);
@@ -113,41 +114,37 @@ document.getElementById("sort").addEventListener("change", (e) => {
 
 const updateCartCount = () => {
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-  document.querySelector(".cart-count").innerText = cartCount; 
-}
+  document.querySelector(".cart-count").innerText = cartCount;
+};
 
 const addToCart = (productId) => {
-  const productInCart = cart.find(item => item.id === productId);
+  const productInCart = cart.find((item) => item.id === productId);
   if (productInCart) {
-      productInCart.quantity += 1; 
+    productInCart.quantity += 1;
   } else {
-      const product = products.find(item => item.id === productId);
-      cart.push({ ...product, quantity: 1 }); 
+    const product = products.find((item) => item.id === productId);
+    cart.push({ ...product, quantity: 1 });
   }
-  localStorage.setItem("cart", JSON.stringify(cart)); 
-  updateCartCount(); 
-}
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+};
 
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("product-card__button")) {
-      const productId = parseInt(e.target.dataset.id);
-      addToCart(productId);
+    const productId = parseInt(e.target.dataset.id);
+    addToCart(productId);
   }
 });
 
 function displayProductModal() {
-  
   const modalBackground = document.querySelector(".product-modal__background");
   const productList = document.querySelector(".products");
 
-  productList.addEventListener('click', (e) => {
-
+  productList.addEventListener("click", (e) => {
     const productItem = e.target.closest(".product-card");
     if (!productItem) return;
 
-    const productIndex = Array.from(productList.children).indexOf(
-      productItem
-    );
+    const productIndex = Array.from(productList.children).indexOf(productItem);
     const product = products[productIndex];
 
     modalBackground.style.visibility = "visible";
@@ -170,16 +167,16 @@ function displayProductModal() {
         </article>
     `;
 
-    const exitButton = modalBackground.querySelector(".product-modal__exit__button");
+    const exitButton = modalBackground.querySelector(
+      ".product-modal__exit__button"
+    );
 
     exitButton.addEventListener("click", () => {
       modalBackground.style.visibility = "hidden";
       modalBackground.style.opacity = "0";
     });
-
   });
-
-};
+}
 
 await fetchProducts();
 displayProducts("All");
