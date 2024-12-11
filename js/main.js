@@ -28,7 +28,7 @@ const displayProducts = (category) => {
 };
 
 const productCardComponent = (product) => `
-        <article class="product-card">
+        <article class="product-card" data-product="${product.title}">
             <div class="product-card__image-container">
               <img
                 class="product-card__image"
@@ -73,7 +73,6 @@ const createCategoryButtons = () => {
   buttons.forEach((button) =>
     button.addEventListener("click", (e) => {
       displayProducts(e.target.dataset.category);
-      console.log(e.target.dataset.category);
       currentCategory = e.target.dataset.category;
     })
   );
@@ -144,8 +143,7 @@ function displayProductModal() {
     const productItem = e.target.closest(".product-card");
     if (!productItem) return;
 
-    const productIndex = Array.from(productList.children).indexOf(productItem);
-    const product = products[productIndex];
+    const product = products.find(product => product.title == productItem.dataset.product)
 
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
