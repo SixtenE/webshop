@@ -23,6 +23,6 @@
 
 - [ ] Custom logotyp
 - [ ] Animationer
-- [ ] Dark mode?
+- [x] ~~Dark mode?~~
 - [ ] SEO?
 - [ ] 100 100 100 100 i Lighthouse 🎉
