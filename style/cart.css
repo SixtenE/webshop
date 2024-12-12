@@ -44,7 +44,7 @@ body {
   gap: 0.5rem;
 }
 
-.header__cart-link {
+/* .header__cart-link {
   position: relative;
   display: flex;
   align-items: center;
@@ -53,7 +53,7 @@ body {
 
   border-radius: 9999px;
   stroke: var(--text-secondary);
-}
+} */
 
 /*MAIN STYLES*/
 main {
@@ -79,6 +79,15 @@ main {
   gap: 1rem;
 }
 
+.shopping-cart__remove-button {
+  cursor: pointer; 
+  transition: transform 0.2s ease; 
+}
+
+.shopping-cart__remove-button:hover {
+  transform: scale(1.1); 
+}
+
 .shipping__form input {
   width: 100%;
 
@@ -96,6 +105,8 @@ main {
 
   background-color: var(--secondary);
 }
+
+
 
 /*MEDIA QUERIES*/
 @media (prefers-color-scheme: dark) {
