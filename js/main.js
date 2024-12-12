@@ -166,10 +166,8 @@ function displayProductModal() {
     const productItem = e.target.closest(".product-card");
     if (!productItem) return; 
 
-  
-    const productListItemButton = e.target.closest(".product-list__item__button")
+    const productListItemButton = e.target.closest(".product-card__button")
     if (productListItemButton) return;
-
 
 
     const product = products.find(product => product.title == productItem.dataset.product)
@@ -193,6 +191,32 @@ function displayProductModal() {
           </div>
         </article>
     `;
+
+    const buyButton = modalBackground.querySelector(
+      ".product-modal__item__button"
+    );
+    
+    const updateCartCount = () => {
+      const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      document.querySelector(".cart-count").innerText = cartCount;
+    };
+    
+    const addToCart = (productId) => {
+      const productInCart = cart.find((item) => item.id === productId);
+      if (productInCart) {
+        productInCart.quantity += 1;
+      } else {
+        const product = products.find((item) => item.id === productId);
+        cart.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    };
+    
+    buyButton.addEventListener("click", (e) => {
+        const productId = parseInt(e.target.dataset.id);
+        addToCart(productId);
+    });
 
     const exitButton = modalBackground.querySelector(
       ".product-modal__exit__button"
