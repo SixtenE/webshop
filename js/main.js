@@ -45,7 +45,28 @@ const productCardComponent = (product) => `
 `;
 
 
+const searchProducts = (query) => {
+  const filteredProducts = products.filter(product => 
+    product.title.toLowerCase().includes(query.toLowerCase())
+  );
 
+  let productHTML = filteredProducts.map(item => productCardComponent(item)).join("");
+  document.querySelector(".product-list").innerHTML = productHTML;
+
+  if (filteredProducts.length === 0) {
+    document.querySelector(".product-list").innerHTML = `<p>No products found for "${query}"</p>`;
+  }
+};
+
+const searchBar = document.querySelector(".search__bar");
+searchBar.addEventListener("input", (e) => {
+  const query = e.target.value.trim();
+  if (query === "") {
+    displayProducts(currentCategory);
+  } else {
+    searchProducts(query);
+  }
+});
 
 
 const createCategoryButtons = () => {

@@ -36,6 +36,39 @@ body {
   background-color: gainsboro;
 }
 
+.search__container {
+  position: relative;
+  display: inline-block;
+}
+
+.search-icon {
+  font-size: 24px;
+  cursor: pointer;
+  color: pink;
+  padding: 0.5rem;
+}
+
+.search__bar {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  transform: translateY(-50%);
+  width: 0;
+  opacity: 0;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.search__container:hover .search__bar {
+  width: 200px;
+  opacity: 1;
+  right: 0;
+}
+
 .header__logo,
 .header__shoppingcart {
   width: 4rem;
