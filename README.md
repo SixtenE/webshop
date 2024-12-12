@@ -12,7 +12,7 @@
 # Funktioner vi skulle vilja få med
 
 ## Shopsidan
-- [ ] Sökruta som filtrerar på textinnehåll - Elin
+- [x] Sökruta som filtrerar på textinnehåll - Elin
 - [x] Lägga till produkter till kundkorgen - Array av objekt - Lägg till i localstorage - Fares
 - [ ] Laddningssymbol under fetch
 - [ ] Modal när man klickar på produkt - Stella
@@ -23,6 +23,6 @@
 
 - [ ] Custom logotyp
 - [ ] Animationer
-- [ ] Dark mode?
+- [x] ~~Dark mode?~~
 - [ ] SEO?
 - [ ] 100 100 100 100 i Lighthouse 🎉
