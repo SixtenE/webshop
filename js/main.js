@@ -166,7 +166,14 @@ function displayProductModal() {
     const productItem = e.target.closest(".product-card");
     if (!productItem) return; 
 
+  
+    const productListItemButton = e.target.closest(".product-list__item__button")
+    if (productListItemButton) return;
 
+
+
+    const product = products.find(product => product.title == productItem.dataset.product)
+    
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
 
