@@ -106,8 +106,8 @@ body {
   width: 100%;
 
   display: flex;
-  gap: 4rem;
-  padding: 1rem 5rem;
+  gap: 1rem;
+  padding: 1rem 3rem;
 
   border-radius: 0.5rem;
   background-color: #065f46;
@@ -119,8 +119,8 @@ body {
   display: flex;
   align-items: center;
 
-  font-size: 1.5rem;
-  line-height: 2rem;
+  font-size: 2.5rem;
+  line-height: 2.5rem;
   color: #ffffff;
 }
 
@@ -347,6 +347,8 @@ main {
 }
 
 @media (min-width: 640px) {
+  .hero {
+  }
   .hero__title {
   }
   .products {
@@ -355,7 +357,12 @@ main {
 }
 
 @media (min-width: 768px) {
+  .hero {
+    padding: 1rem 6rem;
+  }
   .hero__title {
+    font-size: 3rem;
+    line-height: 3rem;
   }
   .products {
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -369,9 +376,11 @@ main {
   .header__search-form {
     width: 300px;
   }
+  .hero {
+    gap: 4rem;
+    padding: 1rem 5rem;
+  }
   .hero__title {
-    font-size: 3rem;
-    line-height: 3.5rem;
   }
   .products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
