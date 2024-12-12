@@ -162,8 +162,7 @@ document.addEventListener("click", (e) => {
 function displayProductModal() {
   const modalBackground = document.querySelector(".product-modal__background");
   const productList = document.querySelector(".products");
-
-  productList.addEventListener("click", (e) => {
+  productList.addEventListener('click', (e) => {
     const productItem = e.target.closest(".product-card");
     if (!productItem) return; 
 
