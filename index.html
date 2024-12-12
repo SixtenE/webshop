@@ -5,47 +5,140 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="js/main.js" type="module"></script>
-    <link rel="stylesheet" href="./style/base.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <script type="module" src="./main.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-1T43DYBY3D");
+    </script>
   </head>
   <body>
-    <header>
-      <a href="/"
-      ><img src="./img/catlogo.svg" alt="logo" class="header__logo"
-      /></a>
-      <h1 class="header__title">Webshop</h1>
-      <div>
-        <div class="search__container">
-          <i class="fa fa-search search-icon"></i>
-          <input type="text" class="search__bar" placeholder="Search...">
+    <div class="container">
+      <header class="header">
+        <div>
+         <a href="./"
+          ><img src="./img/catlogo.svg" alt="catlogo" class="header__logo"
+            /></a>
+              alt="logo"
+              width="150px"
+              height="50px"
+            />
+          </a>
         </div>
-      <div class="container-cart">
-        <a href="/cart"
-          ><img
-            src="./img/shoppingcart.svg"
-            alt="Shopping cart icon"
-            class="header__shoppingcart"
-        /></a>
-        <span class="cart-count">0</span>
-      </div>
-    </div>
+        <div class="header__menu">
+          <form class="header__search-form">
+            <input type="text" class="header__search" placeholder="Search" />
+            <span class="header__search-icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-search"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+            </span>
+          </form>
 
-    </header>
-    <main>
-      <section>
-        <div class="category-form">
-          <div class="btn-container"></div>
+          <a href="./cart" class="header__cart-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-basket"
+            >
+              <path d="m15 11-1 9" />
+              <path d="m19 11-4-7" />
+              <path d="M2 11h20" />
+              <path
+                d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"
+              />
+              <path d="M4.5 15.5h15" />
+              <path d="m5 11 4-7" />
+              <path d="m9 11 1 9" />
+            </svg>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </header>
+      <section class="hero">
+        <div class="hero__title">
+          <h1>Christmas shopping for the whole family</h1>
+        </div>
+        <div class="hero__image">
+          <span>🎁</span>
+        </div>
+      </section>
+      <section id="filters" class="filters">
+        <form class="filter-form">
+          <label for="all">
+            <input id="all" type="radio" name="filter" checked />
+            <span>All</span>
+          </label>
+          <label for="jewelry">
+            <input id="jewelry" type="radio" name="filter" />
+            <span> Jewelry </span>
+          </label>
+        </form>
+        <form class="sort-form">
           <select id="sort">
-            <option>Sort by: </option>
-            <option>Price Ascending</option>
-            <option>Price Descending</option>
-            <option>Rating</option>
-            <option>Alphabetically</option>
-            </select>
-          </div>
-          </section>
-      <section class="product-list"></section>
-    </main>
+            <option selected>Sort by</option>
+            <option data-sortType="price-asc">Price asc. &uarr;</option>
+            <option data-sortType="price-desc">Price desc. &darr;</option>
+            <option data-sortType="rating">Rating</option>
+            <option data-sortType="name">Name</option>
+          </select>
+          <span class="sort-form__icon">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-arrow-down-up"
+            >
+              <path d="m3 16 4 4 4-4" />
+              <path d="M7 20V4" />
+              <path d="m21 8-4-4-4 4" />
+              <path d="M17 4v16" />
+            </svg>
+          </span>
+        </form>
+      </section>
+      <main>
+        <section class="products"></section>
+      </main>
+    </div>
     <div class="product-modal__background"></div>
   </body>
 </html>

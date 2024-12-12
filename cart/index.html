@@ -4,18 +4,85 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="../style/base.css" />
+    <link rel="stylesheet" href="../style/cart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
     <script type="module" src="./main.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-1T43DYBY3D");
+    </script>
   </head>
   <body>
-    <header>
-      <a href="../"> <img src="../img/logo.svg" /> </a>
-      <h1>Shopping Cart</h1>
-    </header>
-    <main>
-      <table class="shopping-cart__table">
-
-      </table>
-    </main>
+    <div class="container">
+      <header class="header">
+        <div>
+          <a href="../" class="header__logo">
+            <img
+              src="https://placehold.co/150x50"
+              alt="logo"
+              width="150px"
+              height="50px"
+            />
+          </a>
+        </div>
+        <div class="header__menu">
+          <a href="#" class="header__cart-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide lucide-shopping-basket"
+            >
+              <path d="m15 11-1 9" />
+              <path d="m19 11-4-7" />
+              <path d="M2 11h20" />
+              <path
+                d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"
+              />
+              <path d="M4.5 15.5h15" />
+              <path d="m5 11 4-7" />
+              <path d="m9 11 1 9" />
+            </svg>
+          </a>
+        </div>
+      </header>
+      <main>
+        <section class="shipping">
+          <form class="shipping__form">
+            Contact
+            <input type="text" name="" id="" />
+            Delivery
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+            <input type="text" name="" id="" />
+          </form>
+        </section>
+        <section class="cart">
+          <table class="shopping-cart__table"></table>
+        </section>
+      </main>
+    </div>
   </body>
 </html>
