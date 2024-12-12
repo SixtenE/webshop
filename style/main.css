@@ -276,7 +276,7 @@ main {
 }
 
 .product-card__button {
-  display: none;
+  display: flex;
   width: fit-content;
 
   padding: 0.3rem 1.5rem;
