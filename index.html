@@ -6,12 +6,32 @@
     <title>Document</title>
     <script src="js/main.js" type="module"></script>
     <link rel="stylesheet" href="./style/main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <script type="module" src="./main.js"></script>
+
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-1T43DYBY3D");
+    </script>
   </head>
   <body>
     <div class="container">
       <header class="header">
         <div>
-          <a href="#logo" class="header__logo">
+          <a href="./" class="header__logo">
             <img
               src="https://placehold.co/150x50"
               alt="logo"
@@ -41,7 +61,7 @@
             </span>
           </form>
 
-          <a href="/cart" class="header__cart-link">
+          <a href="./cart" class="header__cart-link">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="24"
@@ -67,7 +87,15 @@
           </a>
         </div>
       </header>
-      <section class="filters">
+      <section class="hero">
+        <div class="hero__title">
+          <h1>Christmas shopping for the whole family</h1>
+        </div>
+        <div class="hero__image">
+          <span>🎁</span>
+        </div>
+      </section>
+      <section id="filters" class="filters">
         <form class="filter-form">
           <label for="all">
             <input id="all" type="radio" name="filter" checked />
@@ -107,8 +135,7 @@
         </form>
       </section>
       <main>
-        <section class="products">
-        </section>
+        <section class="products"></section>
       </main>
     </div>
     <div class="product-modal__background"></div>
