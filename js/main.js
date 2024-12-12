@@ -164,19 +164,20 @@ function displayProductModal() {
   const productList = document.querySelector(".products");
   productList.addEventListener('click', (e) => {
     const productItem = e.target.closest(".product-card");
-    if (!productItem) return;
+    if (!productItem) return; 
 
-    const productModalBuyButton = e.target.closest(".product-modal__item__button");
-    if (productModalBuyButton) return;
+    const productListItemButton = e.target.closest(".product-card__button")
+    if (productListItemButton) return;
 
 
     const product = products.find(product => product.title == productItem.dataset.product)
-
+    
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
 
     modalBackground.innerHTML = `
         <article class="product-modal__container">
+          <button class="product-modal__exit__button">Exit</button>
           <img src="${product.image}" alt="${product.title}">
           <h3 class="product-modal__title">${product.title}</h3>
           <p class="product-modal__description">${product.description}</p>
@@ -188,9 +189,34 @@ function displayProductModal() {
             <button class="product-modal__item__button">Köp</button>
             <span class="product-modal__item__price">$${product.price}</span>
           </div>
-          <button class="product-modal__exit__button">Exit</button>
         </article>
     `;
+
+    const buyButton = modalBackground.querySelector(
+      ".product-modal__item__button"
+    );
+    
+    const updateCartCount = () => {
+      const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+      document.querySelector(".cart-count").innerText = cartCount;
+    };
+    
+    const addToCart = (productId) => {
+      const productInCart = cart.find((item) => item.id === productId);
+      if (productInCart) {
+        productInCart.quantity += 1;
+      } else {
+        const product = products.find((item) => item.id === productId);
+        cart.push({ ...product, quantity: 1 });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      updateCartCount();
+    };
+    
+    buyButton.addEventListener("click", (e) => {
+        const productId = parseInt(e.target.dataset.id);
+        addToCart(productId);
+    });
 
     const exitButton = modalBackground.querySelector(
       ".product-modal__exit__button"
