@@ -58,10 +58,10 @@ const searchProducts = (query) => {
   );
 
   let productHTML = filteredProducts.map(item => productCardComponent(item)).join("");
-  document.querySelector(".product-list").innerHTML = productHTML;
+  document.querySelector(".products").innerHTML = productHTML;
 
   if (filteredProducts.length === 0) {
-    document.querySelector(".product-list").innerHTML = `<p>No products found for "${query}"</p>`;
+    document.querySelector(".products").innerHTML = `<p>No products found for "${query}"</p>`;
   }
 };
 

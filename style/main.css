@@ -47,6 +47,7 @@ body {
 .header__logo,
 .header__shoppingcart {
   width: 4rem;
+}
   
 .header__search-form {
   width: 150px;
