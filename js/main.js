@@ -1,143 +1,149 @@
 //https://fakestoreapi.com/products
 
- let products = [];
+let products = [];
 let currentCategory = "All";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const fetchProducts = async () => {
-    try {
-        products = await(await fetch("https://fakestoreapi.com/products"
-        )).json();
-    }
-    catch (error) 
-    {
-        console.error(error);
-    }
-}
+  try {
+    products = await (await fetch("https://fakestoreapi.com/products")).json();
+  } catch (error) {
+    console.error(error);
+  }
+};
 
 const displayProducts = (category) => {
   let productHTML = "";
 
-  if (category === "All"){
-    productHTML = products.map(item => (productCardComponent(item))).join("");
-  }else {
-    productHTML = products.filter(item => item.category == category).map(item => (productCardComponent(item))).join("");
+  if (category === "All") {
+    productHTML = products.map((item) => productCardComponent(item)).join("");
+  } else {
+    productHTML = products
+      .filter((item) => item.category == category)
+      .map((item) => productCardComponent(item))
+      .join("");
   }
-  
-  document.querySelector(".product-list").innerHTML = productHTML
 
-
-}
+  document.querySelector(".products").innerHTML = productHTML;
+};
 
 const productCardComponent = (product) => `
-            <article class="product-list__item">
-          <img
-            class="product-list__item__image"
-            src="${product.image}"
-            alt="${product.title} photo"
-          />
-          <h3 class="product-list__item__title">${product.title}</h3>
-          <div class="product-list__item__footer">
-            <button class="product-list__item__button" data-id="${product.id}">Köp</button>
-            <span class="product-list__item__price">$${product.price}</span>
-          </div>
-        </article>
+        <article class="product-card" data-product="${product.title}">
+            <div class="product-card__image-container">
+              <img
+                class="product-card__image"
+                src="${product.image}"
+                alt="${product.title}  photo"
+              />
+            </div>
+            <div class="product-card__content">
+              <p class="product-card__title">
+              ${
+                product.title.trim().length > 32
+                  ? `${product.title.substring(0, 32).trim()}...`
+                  : product.title.trim()
+              }
+              </p>
+              <p class="product-card__price">$${product.price}</p>
+            </div>
+            <button class="product-card__button" data-id="${
+              product.id
+            }">Add to cart</button>
+          </article>
 `;
 
-
-
-
-
 const createCategoryButtons = () => {
-  const btnContainer = document.querySelector(".btn-container");
+  const btnContainer = document.querySelector(".filter-form");
 
   const newArray = products.reduce((accumulator, product) => {
-
-   if (!accumulator.includes(product.category)) {
-    accumulator.push(product.category); 
-   }
-   return (accumulator);
-  },[]);
-
-  const btnHTML = newArray.map(category => categoryComponent(category)).join("");
+    if (!accumulator.includes(product.category)) {
+      accumulator.push(product.category);
+    }
+    return accumulator;
+  }, []);
+  let btnHTML = `
+    <label for="all">
+            <input id="all" class="category-button" type="radio" name="filter" data-category="All" checked />
+            <span>All</span>
+          </label>
+          `;
+  btnHTML += newArray.map((category) => categoryComponent(category)).join("");
   btnContainer.innerHTML = btnHTML;
-  const buttons = document.querySelectorAll(".btn-category");
-  buttons.forEach(button => button.addEventListener('click', e => {
-    displayProducts(e.target.dataset.category);
-    currentCategory = e.target.dataset.category;
-  }));
-
-}
-
+  const buttons = document.querySelectorAll(".category-button");
+  buttons.forEach((button) =>
+    button.addEventListener("click", (e) => {
+      displayProducts(e.target.dataset.category);
+      currentCategory = e.target.dataset.category;
+    })
+  );
+};
 
 const categoryComponent = (category) => `
- <label for="${category}" class="btn-category">
- ${category}
- <input type="radio" class="radio__btn" name="radio-btn" id="${category}" data-category="${category}"></input>
- </label>
-`
+
+           <label for="${category}">
+            <input  id="${category}" type="radio" class="category-button" name="filter" data-category="${category}"/>
+            <span>  ${category} </span>
+          </label>
+`;
 
 const sortProducts = (order) => {
   switch (order) {
-    case "Price Ascending":
+    case "price-asc":
       products.sort((a, b) => a.price - b.price);
       break;
-    case "Price Descending":
+    case "price-desc":
       products.sort((a, b) => b.price - a.price);
       break;
-    case "Rating":
-      products.sort((a,b) => b.rating.rate - a.rating.rate)
+    case "rating":
+      products.sort((a, b) => b.rating.rate - a.rating.rate);
       break;
-    case "Alphabetically":
-      products.sort((a,b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()))
+    case "name":
+      products.sort((a, b) =>
+        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+      );
       break;
   }
 
-  displayProducts(currentCategory); 
-}
+  displayProducts(currentCategory);
+};
 
 document.getElementById("sort").addEventListener("change", (e) => {
-  sortProducts(e.target.value);
+  sortProducts(e.target.selectedOptions[0].dataset.sorttype);
 });
 
 const updateCartCount = () => {
   const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
-  document.querySelector(".cart-count").innerText = cartCount; 
-}
+  document.querySelector(".cart-count").innerText = cartCount;
+};
 
 const addToCart = (productId) => {
-  const productInCart = cart.find(item => item.id === productId);
+  const productInCart = cart.find((item) => item.id === productId);
   if (productInCart) {
-      productInCart.quantity += 1; 
+    productInCart.quantity += 1;
   } else {
-      const product = products.find(item => item.id === productId);
-      cart.push({ ...product, quantity: 1 }); 
+    const product = products.find((item) => item.id === productId);
+    cart.push({ ...product, quantity: 1 });
   }
-  localStorage.setItem("cart", JSON.stringify(cart)); 
-  updateCartCount(); 
-}
+  localStorage.setItem("cart", JSON.stringify(cart));
+  updateCartCount();
+};
 
 document.addEventListener("click", (e) => {
-  if (e.target.classList.contains("product-list__item__button")) {
-      const productId = parseInt(e.target.dataset.id);
-      addToCart(productId);
+  if (e.target.classList.contains("product-card__button")) {
+    const productId = parseInt(e.target.dataset.id);
+    addToCart(productId);
   }
 });
 
 function displayProductModal() {
-  
   const modalBackground = document.querySelector(".product-modal__background");
-  const productList = document.querySelector(".product-list");
+  const productList = document.querySelector(".products");
 
-  productList.addEventListener('click', (e) => {
-
-    const productItem = e.target.closest(".product-list__item");
+  productList.addEventListener("click", (e) => {
+    const productItem = e.target.closest(".product-card");
     if (!productItem) return;
 
-    const productIndex = Array.from(productList.children).indexOf(
-      productItem
-    );
-    const product = products[productIndex];
+    const product = products.find(product => product.title == productItem.dataset.product)
 
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
@@ -159,16 +165,16 @@ function displayProductModal() {
         </article>
     `;
 
-    const exitButton = modalBackground.querySelector(".product-modal__exit__button");
+    const exitButton = modalBackground.querySelector(
+      ".product-modal__exit__button"
+    );
 
     exitButton.addEventListener("click", () => {
       modalBackground.style.visibility = "hidden";
       modalBackground.style.opacity = "0";
     });
-
   });
-
-};
+}
 
 await fetchProducts();
 displayProducts("All");
