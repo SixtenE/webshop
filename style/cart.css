@@ -58,9 +58,9 @@ body {
 /*MAIN STYLES*/
 main {
   width: 100%;
-  height: 30rem;
 
   display: flex;
+  flex-direction: column;
 }
 
 /*SHIPPING STYLES*/
@@ -76,25 +76,55 @@ main {
   display: flex;
   flex-direction: column;
   padding-right: 3rem;
-  gap: 1rem;
+  gap: 0.8rem;
 }
 
 .shopping-cart__remove-button {
-  cursor: pointer; 
-  transition: transform 0.2s ease; 
+  cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 .shopping-cart__remove-button:hover {
-  transform: scale(1.1); 
+  transform: scale(1.1);
 }
 
-.shipping__form input {
+.shipping__form p {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.shipping__form div {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.shipping__form div input {
   width: 100%;
 
-  padding: 0.5rem;
+  padding: 1rem 0 0.5rem 1rem;
+  z-index: 10;
 
-  background-color: var(--secondary);
-  border-radius: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 0.3rem;
+}
+
+.shipping__form div label {
+  position: absolute;
+  left: 1rem;
+
+  color: #525252;
+  font-size: 0.8rem;
+
+  transition: all 100ms ease-in-out;
+}
+
+.shipping__form div input:focus + label,
+.shipping__form div input:valid + label {
+  transform: translateY(-0.8rem);
+  font-size: 0.6rem;
 }
 
 /*CART STYLES*/
@@ -105,8 +135,6 @@ main {
 
   background-color: var(--secondary);
 }
-
-
 
 /*MEDIA QUERIES*/
 @media (prefers-color-scheme: dark) {
@@ -123,6 +151,9 @@ main {
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
+  }
+  main {
+    flex-direction: row-reverse;
   }
 }
 
