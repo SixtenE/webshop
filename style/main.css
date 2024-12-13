@@ -345,6 +345,26 @@ main {
   font-size: 2rem;
 }
 
+.loading-icon {
+  margin-left: auto;
+  margin-right: auto;
+  grid-column: 1/-1;
+  width: 5rem;
+  height: 5rem;
+}
+.spinny-spin {
+  animation: spin-animation 2s infinite cubic-bezier(0.74,.3,.33,.6);
+}
+
+@keyframes spin-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg)
+  }
+}
+
 /*MEDIA QUERIES*/
 @media (prefers-color-scheme: dark) {
   :root {

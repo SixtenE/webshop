@@ -5,6 +5,11 @@ let currentCategory = "All";
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const fetchProducts = async () => {
+  const loadingIcon = document.createElement("img");
+  loadingIcon.classList.add("loading-icon")
+  loadingIcon.classList.add("spinny-spin")
+  loadingIcon.setAttribute('src', '../img/loading-icon.svg');
+  document.querySelector(".products").appendChild(loadingIcon)
   try {
     products = await (await fetch("https://fakestoreapi.com/products")).json();
   } catch (error) {
@@ -24,7 +29,7 @@ const displayProducts = (category) => {
       .join("");
   }
 
-  document.querySelector(".products").innerHTML = productHTML;
+ document.querySelector(".products").innerHTML = productHTML;
 };
 
 const productCardComponent = (product) => `
