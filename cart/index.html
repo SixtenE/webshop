@@ -31,31 +31,71 @@
       <header class="header">
         <div>
           <a href="../" class="header__logo">
-            <img src="../img/catlogo.svg" alt="catlogo" class="header__logo"
+            <img
+              src="../img/catlogo.svg"
+              alt="catlogo"
+              class="header__logo"
               alt="catlogo"
               width="50px"
               height="50px"
             />
           </a>
         </div>
-        
       </header>
       <main>
-        <section class="shipping">
-          <form class="shipping__form">
-            Contact
-            <input type="text" name="" id="" />
-            Delivery
-            <input type="text" name="" id="" />
-            <input type="text" name="" id="" />
-            <input type="text" name="" id="" />
-            <input type="text" name="" id="" />
-            <input type="text" name="" id="" />
-            <input type="text" name="" id="" />
-          </form>
-        </section>
         <section class="cart">
           <table class="shopping-cart__table"></table>
+        </section>
+        <section class="shipping">
+          <form class="shipping__form">
+            <p>Contact</p>
+            <input type="text" name="" id="" />
+            <p>Delivery</p>
+            <div>
+              <input
+                type="text"
+                name="country-region"
+                id="country-region"
+                required
+              />
+              <label for="country-region">Country/Region</label>
+            </div>
+            <div>
+              <input type="text" name="name-first" id="name-first" required />
+              <label for="name-first">First name (optional)</label>
+            </div>
+            <div>
+              <input type="text" name="name-last" id="name-last" required />
+              <label for="name-last">Last name</label>
+            </div>
+            <div>
+              <input type="text" name="address" id="address" required />
+              <label for="address">Address</label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="address-optional"
+                id="address-optional"
+                required
+              />
+              <label for="address-optional"
+                >Apartment, suite, etc. (optional)</label
+              >
+            </div>
+            <div>
+              <input type="text" name="city" id="city" required />
+              <label for="city">City</label>
+            </div>
+            <div>
+              <input type="text" name="state" id="state" required />
+              <label for="state">State</label>
+            </div>
+            <div>
+              <input type="text" name="zip-code" id="zip-code" required />
+              <label for="zip-code">Zip code</label>
+            </div>
+          </form>
         </section>
       </main>
     </div>
