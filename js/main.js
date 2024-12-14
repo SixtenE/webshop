@@ -6,10 +6,10 @@ let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const fetchProducts = async () => {
   const loadingIcon = document.createElement("img");
-  loadingIcon.classList.add("loading-icon")
-  loadingIcon.classList.add("spinny-spin")
-  loadingIcon.setAttribute('src', '../img/loading-icon.svg');
-  document.querySelector(".products").appendChild(loadingIcon)
+  loadingIcon.classList.add("loading-icon");
+  loadingIcon.classList.add("spinny-spin");
+  loadingIcon.setAttribute("src", "../img/loading-icon.svg");
+  document.querySelector(".products").appendChild(loadingIcon);
   try {
     products = await (await fetch("https://fakestoreapi.com/products")).json();
   } catch (error) {
@@ -29,7 +29,7 @@ const displayProducts = (category) => {
       .join("");
   }
 
- document.querySelector(".products").innerHTML = productHTML;
+  document.querySelector(".products").innerHTML = productHTML;
 };
 
 const productCardComponent = (product) => `
@@ -43,26 +43,18 @@ const productCardComponent = (product) => `
             </div>
             <div class="product-card__content">
               <p class="product-card__title">
-              ${
-                product.title.trim().length > 32
-                  ? `${product.title.substring(0, 32).trim()}...`
-                  : product.title.trim()
-              }
+              ${product.title.trim().length > 32 ? `${product.title.substring(0, 32).trim()}...` : product.title.trim()}
               </p>
               <p class="product-card__price">$${product.price}</p>
             </div>
-            <button class="product-card__button" data-id="${
-              product.id
-            }">Add to cart</button>
+            <button class="product-card__button" data-id="${product.id}">Add to cart</button>
           </article>
 `;
 
 const searchProducts = (query) => {
-  const filteredProducts = products.filter(product => 
-    product.title.toLowerCase().includes(query.toLowerCase())
-  );
+  const filteredProducts = products.filter((product) => product.title.toLowerCase().includes(query.toLowerCase()));
 
-  let productHTML = filteredProducts.map(item => productCardComponent(item)).join("");
+  let productHTML = filteredProducts.map((item) => productCardComponent(item)).join("");
   document.querySelector(".products").innerHTML = productHTML;
 
   if (filteredProducts.length === 0) {
@@ -79,7 +71,6 @@ searchBar.addEventListener("input", (e) => {
     searchProducts(query);
   }
 });
-
 
 const createCategoryButtons = () => {
   const btnContainer = document.querySelector(".filter-form");
@@ -127,9 +118,7 @@ const sortProducts = (order) => {
       products.sort((a, b) => b.rating.rate - a.rating.rate);
       break;
     case "name":
-      products.sort((a, b) =>
-        a.title.toLowerCase().localeCompare(b.title.toLowerCase())
-      );
+      products.sort((a, b) => a.title.toLowerCase().localeCompare(b.title.toLowerCase()));
       break;
   }
 
@@ -167,16 +156,15 @@ document.addEventListener("click", (e) => {
 function displayProductModal() {
   const modalBackground = document.querySelector(".product-modal__background");
   const productList = document.querySelector(".products");
-  productList.addEventListener('click', (e) => {
+  productList.addEventListener("click", (e) => {
     const productItem = e.target.closest(".product-card");
-    if (!productItem) return; 
+    if (!productItem) return;
 
-    const productListItemButton = e.target.closest(".product-card__button")
+    const productListItemButton = e.target.closest(".product-card__button");
     if (productListItemButton) return;
 
+    const product = products.find((product) => product.title == productItem.dataset.product);
 
-    const product = products.find(product => product.title == productItem.dataset.product)
-    
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
 
@@ -197,15 +185,13 @@ function displayProductModal() {
         </article>
     `;
 
-    const buyButton = modalBackground.querySelector(
-      ".product-modal__item__button"
-    );
-    
+    const buyButton = modalBackground.querySelector(".product-modal__item__button");
+
     const updateCartCount = () => {
       const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
       document.querySelector(".cart-count").innerText = cartCount;
     };
-    
+
     const addToCart = (productId) => {
       const productInCart = cart.find((item) => item.id === productId);
       if (productInCart) {
@@ -217,15 +203,13 @@ function displayProductModal() {
       localStorage.setItem("cart", JSON.stringify(cart));
       updateCartCount();
     };
-    
+
     buyButton.addEventListener("click", (e) => {
-        const productId = parseInt(e.target.dataset.id);
-        addToCart(productId);
+      const productId = parseInt(e.target.dataset.id);
+      addToCart(productId);
     });
 
-    const exitButton = modalBackground.querySelector(
-      ".product-modal__exit__button"
-    );
+    const exitButton = modalBackground.querySelector(".product-modal__exit__button");
 
     exitButton.addEventListener("click", () => {
       modalBackground.style.visibility = "hidden";

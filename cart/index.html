@@ -7,16 +7,10 @@
     <link rel="stylesheet" href="../style/cart.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
     <script type="module" src="./main.js"></script>
 
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -31,33 +25,49 @@
       <header class="header">
         <div>
           <a href="../" class="header__logo">
-            <img
-              src="../img/catlogo.svg"
-              alt="catlogo"
-              class="header__logo"
-              alt="catlogo"
-              width="50px"
-              height="50px"
-            />
+            <img src="../img/catlogo.svg" alt="catlogo" class="header__logo" alt="catlogo" width="50px" height="50px" />
           </a>
         </div>
       </header>
       <main>
         <section class="cart">
-          <table class="shopping-cart__table"></table>
+          <ul>
+            <li></li>
+            <li></li>
+          </ul>
+          <form action="">
+            <input type="text" name="" id="" />
+            <button>Apply</button>
+          </form>
+          <div>
+            <div>
+              <p>Subtotal</p>
+              <p>$199.90</p>
+            </div>
+            <div>
+              <p>Shipping</p>
+              <p>Calculated at next step</p>
+            </div>
+          </div>
+          <div>
+            <p>Total</p>
+            <p>
+              <span>USD</span>
+              $199.90
+            </p>
+          </div>
         </section>
         <section class="shipping">
           <form class="shipping__form">
             <p>Contact</p>
-            <input type="text" name="" id="" />
+            <div>
+              <input type="text" name="email" id="email" required />
+              <label for="email">Email</label>
+            </div>
+            <label for="news"><input type="checkbox" name="" id="news" />Email me with news and offers</label>
             <p>Delivery</p>
             <div>
-              <input
-                type="text"
-                name="country-region"
-                id="country-region"
-                required
-              />
+              <input type="text" name="country-region" id="country-region" required />
               <label for="country-region">Country/Region</label>
             </div>
             <div>
@@ -73,15 +83,8 @@
               <label for="address">Address</label>
             </div>
             <div>
-              <input
-                type="text"
-                name="address-optional"
-                id="address-optional"
-                required
-              />
-              <label for="address-optional"
-                >Apartment, suite, etc. (optional)</label
-              >
+              <input type="text" name="address-optional" id="address-optional" required />
+              <label for="address-optional">Apartment, suite, etc. (optional)</label>
             </div>
             <div>
               <input type="text" name="city" id="city" required />
