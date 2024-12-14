@@ -5,19 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mormors Dödsbo</title>
     <script src="./js/main.js" type="module"></script>
+    <script src="./js/snowfall.min.js" defer></script>
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
-      rel="stylesheet"
-    />
-          <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"
-    ></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-1T43DYBY3D"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -31,9 +26,8 @@
     <div class="container">
       <header class="header">
         <div>
-         <a href="./"
-          ><img src="./img/catlogo.svg" alt="catlogo" class="header__logo"
-            /></a>
+          <a href="./">
+            <img src="./img/catlogo.svg" alt="catlogo" class="header__logo" width="50px" height="50px" />
           </a>
         </div>
         <div class="header__menu">
@@ -72,9 +66,7 @@
               <path d="m15 11-1 9" />
               <path d="m19 11-4-7" />
               <path d="M2 11h20" />
-              <path
-                d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4"
-              />
+              <path d="m3.5 11 1.6 7.4a2 2 0 0 0 2 1.6h9.8a2 2 0 0 0 2-1.6l1.7-7.4" />
               <path d="M4.5 15.5h15" />
               <path d="m5 11 4-7" />
               <path d="m9 11 1 9" />
@@ -84,6 +76,7 @@
         </div>
       </header>
       <section class="hero">
+        <canvas id="snowfall-element"></canvas>
         <div class="hero__title">
           <h1>Christmas shopping for the whole family</h1>
         </div>
@@ -97,16 +90,12 @@
             <input id="all" type="radio" name="filter" checked />
             <span>All</span>
           </label>
-          <label for="jewelry">
-            <input id="jewelry" type="radio" name="filter" />
-            <span> Jewelry </span>
-          </label>
         </form>
         <form class="sort-form">
           <select id="sort">
             <option selected>Sort by</option>
-            <option data-sortType="price-asc">Price asc. &uarr;</option>
-            <option data-sortType="price-desc">Price desc. &darr;</option>
+            <option data-sortType="price-asc">Price asc.</option>
+            <option data-sortType="price-desc">Price desc.</option>
             <option data-sortType="rating">Rating</option>
             <option data-sortType="name">Name</option>
           </select>
