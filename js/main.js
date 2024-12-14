@@ -8,7 +8,7 @@ const fetchProducts = async () => {
   const loadingIcon = document.createElement("img");
   loadingIcon.classList.add("loading-icon");
   loadingIcon.classList.add("spinny-spin");
-  loadingIcon.setAttribute("src", "../img/loading-icon.svg");
+  loadingIcon.setAttribute("src", "./img/loading-icon.svg");
   document.querySelector(".products").appendChild(loadingIcon);
   try {
     products = await (await fetch("https://fakestoreapi.com/products")).json();
