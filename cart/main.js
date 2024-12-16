@@ -26,7 +26,7 @@ const populateProductTable = () => {
     tableHTML += `
         <tr class="shopping-cart__total-row">
           <td>Total:</td>
-          <td id="total-amount">$${totalPrice.toFixed(2)}</td>
+          <td id="total-amount" class="shopping-cart__total-cell">$${totalPrice.toFixed(2)}</td>
         </tr>`
 
       }
@@ -57,12 +57,7 @@ const removeProduct = (event) => {
 
 const tableHeaderHTML = () => {
   return `
-        <tr class="shopping-cart__headers">
-          <td>Product</td>
-          <td>Price</td>
-          <td>Quantity</td>
-          <td>Subtotal</td>
-        </tr>`
+`
 }
 
 const emptyShoppingcartHTML = () => {
@@ -79,14 +74,6 @@ const updateProductAmount = (event) => {
     const productRow = event.target.closest(".shopping-cart__table-row")
     const productName = productRow.dataset.item
     const newAmount =  event.target.value;
-    /* 
-    Option 1
-
-    products = products.map(product => {
-        if(product.name === productName) product.amount = newAmount
-        return product
-    }) 
-    */
     
     //Option 2
     products.forEach((product, index) => {
@@ -128,12 +115,12 @@ const updateProductTable = (productName) => {
     productTable.querySelectorAll(".shopping-cart__table-row").forEach(row => {
         if(row.dataset.item == productName) updatedRow = row;
     })
-    const subtotal = updatedRow.querySelector(".shopping-cart__subtotal")
+    const subtotal = updatedRow.querySelector(".shopping-cart__product-subtotal")
     let newSubTotal = 0;
     products.forEach(product => {
       if (product.title === productName) newSubTotal = product.quantity * product.price
     })
-    subtotal.innerHTML = `$${newSubTotal.toFixed(2)}`
+    subtotal.innerHTML = `Subtotal: $${newSubTotal.toFixed(2)}`
 }
 
 const saveToLocalStorage = (newCart) => {
@@ -143,7 +130,7 @@ const saveToLocalStorage = (newCart) => {
 const createProductRow = (product) => {
     let productHTML = `
         <tr class="shopping-cart__table-row" data-item="${product.title}">
-          <td class="shopping-cart__product-cell">
+          <td class="shopping-cart__product-image">
             <img
               class="shopping-cart__product-images"
               src="${product.image}"
@@ -151,16 +138,19 @@ const createProductRow = (product) => {
               width="100px"
               height="auto"
             />
-            <span class="shopping-cart__product-name">${product.title}</span>
-          </td>
-          <td class="shopping-cart__product-price">$${product.price}</td>
-          <td>
-            <input type="number" class="shopping-cart__amount" value="${product.quantity}"/>
             
+          </td>
+          <td class="shopping-cart__product-info"> 
+          <span class="shopping-cart__product-name">${product.title}</span>
+          <span class="shopping-cart__product-price">Price: $${product.price}</span>
+          <div class="shopping-cart__quantity-cell">
+            <span>Amount:</span> <input type="number" class="shopping-cart__amount" value="${product.quantity}"/>
             <img src="../img/trash.svg" alt="Ta bort" class="shopping-cart__remove-button">
+            </div>
+          <span class="shopping-cart__product-subtotal">Subtotal: $${(product.price * product.quantity).toFixed(2)}</span>
 
           </td>
-          <td class="shopping-cart__subtotal">$${(product.price * product.quantity).toFixed(2)}</td>
+
         </tr>
     `
     return productHTML
