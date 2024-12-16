@@ -20,7 +20,7 @@ body {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  padding: 0 1rem 15rem 1rem;
+  padding: 0 0.5rem 15rem 0.5rem;
 }
 
 /*HEADER STYLES*/
@@ -58,10 +58,6 @@ body {
 
   background-color: var(--secondary);
   border-radius: 9999px;
-}
-
-.header__search:focus {
-  padding-right: 500px;
 }
 
 .header__search-icon {
@@ -160,7 +156,10 @@ body {
   width: 100%;
 
   display: flex;
-  flex-wrap: wrap;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+
   gap: 0.5rem;
 }
 
@@ -174,6 +173,7 @@ body {
   background-color: #f5f5f5;
   border-radius: 9999px;
   font-size: 0.8rem;
+  font-weight: 600;
   cursor: pointer;
   color: var(--text-primary);
 }
@@ -236,12 +236,13 @@ main {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.25rem;
+  gap: 1rem 0.25rem;
 }
 
 .product-card {
   width: 100%;
 
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
@@ -289,21 +290,25 @@ main {
 .product-card__price {
   width: fit-content;
 
-  font-size: 0.8rem;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
 }
 
 .product-card__button {
-  display: flex;
-  width: fit-content;
+  width: 100%;
 
-  padding: 0.3rem 1.5rem;
+  padding: 0.4rem 0;
 
-  background-color: var(--brand);
+  background-color: var(--secondary);
   border-radius: 9999px;
-  color: var(--background-color);
-  font-size: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+}
+
+.product-card__button:active {
+  background-color: #e5e5e5;
+  color: var(--text-primary);
 }
 
 .product-modal__background {
@@ -411,6 +416,9 @@ main {
 }
 
 @media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
   .hero {
   }
   .hero__title {
@@ -421,6 +429,9 @@ main {
 }
 
 @media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
   .hero {
     padding: 1rem 6rem;
   }
