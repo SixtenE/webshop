@@ -324,20 +324,57 @@ main {
 
 .product-modal__container {
   background-color: #ffffff;
-  width: 40%;
-  height: 90%;
+  width: 80%;
+  height: 85%;
   padding: 2rem;
   border-radius: 10px;
-  border: 3px solid hsl(0, 0%, 31%);
   display: flex;
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
 }
 
+.product-modal__exit__button {
+  color: white;
+ background-color: rgb(191, 191, 191);
+  border-radius: 5px;
+  padding-left: 0.4rem;
+  padding-right: 0.4rem;
+  font-weight: bold;
+}
+
+.product-modal__button__section {
+  width: 100%;
+  display: flex;
+  justify-content: right;
+}
+
 .product-modal__container img {
   padding: 3rem;
-  width: 10vw;
+  object-fit: contain;
+  height: 220px;
+}
+
+.product-modal__title {
+  font-size: small;
+}
+
+.product-modal__description {
+  font-size: xx-small;
+  object-fit: contain;
+}
+
+.product-modal__rating {
+text-align: right;
+display: block;
+width: 100%;
+font-size: small;
+}
+
+.product-modal__footer {
+  display: flex;
+  justify-content: space-between;
+width: 100%;
 }
 
 /*SHOPPING CART STYLES*/
@@ -418,6 +455,13 @@ main {
   .products {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .product-modal__container {
+    width: 70%;
+    height: 85%;
+  }
+
+
 }
 
 @media (min-width: 768px) {
@@ -430,6 +474,14 @@ main {
   }
   .products {
     grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .product-modal__container {
+    width: 60%;
+  }
+
+  .product-modal__description {
+    font-size: small;
   }
 }
 
@@ -450,5 +502,10 @@ main {
   }
   .products {
     grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  
+  .product-modal__container {
+    width: 40%;
   }
 }
