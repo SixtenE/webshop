@@ -167,20 +167,20 @@ function displayProductModal() {
 
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
+    
 
     modalBackground.innerHTML = `
         <article class="product-modal__container">
-          <button class="product-modal__exit__button">Exit</button>
+        <div class="product-modal__button__section">
+          <button class="product-modal__exit__button">X</button>
+        </div>
           <img src="${product.image}" alt="${product.title}">
-          <h3 class="product-modal__title">${product.title}</h3>
+          <h3 class="product-modal__title"><b>${product.title}</b></h3>
           <p class="product-modal__description">${product.description}</p>
-          <div class="product-modal__rating">
-            <p><b>Rate:</b>${product.rating.rate}</p>
-            <p><b>Count:</b>${product.rating.count}</p>
-          </div>
-          <div class="product-list__item__footer">
+          <p class="product-modal__rating"><b>Products left: </b>${product.rating.count}</p>
+          <div class="product-modal__footer">
             <button class="product-card__button" data-id="${product.id}">Add to cart</button>
-            <span class="product-modal__item__price">$${product.price}</span>
+            <span class="product-modal__item__price"><b>$${product.price}</b></span>
           </div>
         </article>
     `;
