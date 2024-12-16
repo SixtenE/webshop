@@ -179,13 +179,13 @@ function displayProductModal() {
             <p><b>Count:</b>${product.rating.count}</p>
           </div>
           <div class="product-list__item__footer">
-            <button class="product-modal__item__button">Köp</button>
+            <button class="product-card__button" data-id="${product.id}">Add to cart</button>
             <span class="product-modal__item__price">$${product.price}</span>
           </div>
         </article>
     `;
 
-    const buyButton = modalBackground.querySelector(".product-modal__item__button");
+    /* const buyButton = modalBackground.querySelector(".product-modal__item__button");
 
     const updateCartCount = () => {
       const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
@@ -207,7 +207,7 @@ function displayProductModal() {
     buyButton.addEventListener("click", (e) => {
       const productId = parseInt(e.target.dataset.id);
       addToCart(productId);
-    });
+    }); */
 
     const exitButton = modalBackground.querySelector(".product-modal__exit__button");
 
