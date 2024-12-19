@@ -136,18 +136,25 @@ const updateCartCount = () => {
 
 const addToCart = (productId) => {
   const productInCart = cart.find((item) => item.id === productId);
-  gtag('event', 'button_click', {
-    'event_category': 'interactions on products',
-    'event_label': 'adding products to cart',
-    'value': productInCart.title,
-    'debug_mode': true
-  });
+
 
   if (productInCart) {
     productInCart.quantity += 1;
+    gtag('event', 'added_to_cart', {
+      'event_category': 'interactions on products',
+      'event_label': 'adding products to cart',
+      'value': productInCart.title,
+      'debug_mode': true
+    });
   } else {
     const product = products.find((item) => item.id === productId);
     cart.push({ ...product, quantity: 1 });
+    gtag('event', 'added_to_cart', {
+      'event_category': 'interactions on products',
+      'event_label': 'adding products to cart',
+      'value': product.title,
+      'debug_mode': true
+    });
   }
   localStorage.setItem("cart", JSON.stringify(cart));
   updateCartCount();
