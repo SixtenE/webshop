@@ -140,17 +140,15 @@ const addToCart = (productId) => {
 
   if (productInCart) {
     productInCart.quantity += 1;
-    gtag('event', 'added_to_cart', {
-      'event_category': 'interactions on products',
-      'event_label': 'adding products to cart',
+    gtag('event', 'add_to_cart', {
+      'event_name': 'add_cart',
       'value': productInCart.title,
     });
   } else {
     const product = products.find((item) => item.id === productId);
     cart.push({ ...product, quantity: 1 });
-    gtag('event', 'added_to_cart', {
-      'event_category': 'interactions on products',
-      'event_label': 'adding products to cart',
+     gtag('event', 'add_to_cart', {
+      'event_name': 'add_cart',
       'value': product.title,
     });
   }
