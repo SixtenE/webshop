@@ -140,10 +140,10 @@ const addToCart = (productId) => {
   gtag('event', 'button_click', {
     'event_category': 'interactions on products',
     'event_label': 'adding products to cart',
-    'value': productInCart.name,
+    'value': productInCart.title,
     'debug_mode': true
   });
-  
+
   if (productInCart) {
     productInCart.quantity += 1;
   } else {
