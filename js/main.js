@@ -178,7 +178,7 @@ function displayProductModal() {
     gtag('event', 'button_click', {
       'event_category': 'interactions on products',
       'event_label': 'opening of product modal',
-      'value': productInCart.title,
+      'value': product.title,
     });
     
     modalBackground.style.visibility = "visible";
