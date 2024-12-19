@@ -416,7 +416,27 @@ width: 100%;
   animation: spin-animation 2s infinite cubic-bezier(0.74, 0.3, 0.33, 0.6);
 }
 
+.cart-jiggle {
+  animation: jiggle 0.3s infinite linear;
+}
+
 /*ANIMATIONS*/
+
+@keyframes jiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  33% {
+    transform: rotate(-10deg);
+  }
+
+  66% {
+    transform: rotate(10deg);
+  }
+
+}
+
 @keyframes spin-animation {
   0% {
     transform: rotate(0deg);

@@ -141,6 +141,12 @@ const updateCartCount = () => {
 const addToCart = (productId) => {
   const productInCart = cart.find((item) => item.id === productId);
 
+  const shoppingCart = document.getElementsByClassName("lucide-shopping-basket")[0]
+  shoppingCart.classList.add("cart-jiggle")
+
+  setTimeout(() => {
+    shoppingCart.classList.remove("cart-jiggle")
+  }, 1000)
 
   if (productInCart) {
     productInCart.quantity += 1;
