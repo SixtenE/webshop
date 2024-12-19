@@ -175,7 +175,7 @@ function displayProductModal() {
 
 
 
-    gtag('event', 'button_click', {
+    gtag('event', 'modal_opening', {
       'event_category': 'interactions on products',
       'event_label': 'opening of product modal',
       'value': product.title,
