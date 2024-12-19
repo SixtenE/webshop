@@ -136,6 +136,14 @@ const updateCartCount = () => {
 
 const addToCart = (productId) => {
   const productInCart = cart.find((item) => item.id === productId);
+
+  gtag('event', 'button_click', {
+    'event_category': 'interactions on products',
+    'event_label': 'adding products to cart',
+    'value': productInCart.name,
+    'debug_mode': true
+  });
+  
   if (productInCart) {
     productInCart.quantity += 1;
   } else {
@@ -150,6 +158,7 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("product-card__button")) {
     const productId = parseInt(e.target.dataset.id);
     addToCart(productId);
+
   }
 });
 
