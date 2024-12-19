@@ -179,6 +179,8 @@ function displayProductModal() {
       'event_category': 'interactions on products',
       'event_label': 'opening of product modal',
       'value': product.title,
+      'debug_mode': true
+
     });
     
     modalBackground.style.visibility = "visible";
