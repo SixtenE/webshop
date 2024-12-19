@@ -163,6 +163,10 @@ body {
   gap: 0.5rem;
 }
 
+.filter-form::-webkit-scrollbar {
+  display: none;
+}
+
 .filter-form label {
   width: fit-content;
   height: fit-content;

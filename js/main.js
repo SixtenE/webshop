@@ -19,7 +19,11 @@ const fetchProducts = async () => {
 
 const displayProducts = (category) => {
   let productHTML = "";
-
+  gtag('event', 'filter_category', {
+    'event_name': 'filter_category',
+    'value': category,
+    'debug_mode': true
+  });
   if (category === "All") {
     productHTML = products.map((item) => productCardComponent(item)).join("");
   } else {
@@ -143,6 +147,7 @@ const addToCart = (productId) => {
     gtag('event', 'add_to_cart', {
       'event_name': 'add_cart',
       'value': productInCart.title,
+      'debug_mode': true
     });
   } else {
     const product = products.find((item) => item.id === productId);
@@ -150,6 +155,7 @@ const addToCart = (productId) => {
      gtag('event', 'add_to_cart', {
       'event_name': 'add_cart',
       'value': product.title,
+      'debug_mode': true
     });
   }
   localStorage.setItem("cart", JSON.stringify(cart));
