@@ -136,7 +136,6 @@ const updateCartCount = () => {
 
 const addToCart = (productId) => {
   const productInCart = cart.find((item) => item.id === productId);
-
   gtag('event', 'button_click', {
     'event_category': 'interactions on products',
     'event_label': 'adding products to cart',
@@ -174,6 +173,14 @@ function displayProductModal() {
 
     const product = products.find((product) => product.title == productItem.dataset.product);
 
+
+
+    gtag('event', 'button_click', {
+      'event_category': 'interactions on products',
+      'event_label': 'opening of product modal',
+      'value': productInCart.title,
+    });
+    
     modalBackground.style.visibility = "visible";
     modalBackground.style.opacity = "1";
     
