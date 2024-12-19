@@ -144,7 +144,6 @@ const addToCart = (productId) => {
       'event_category': 'interactions on products',
       'event_label': 'adding products to cart',
       'value': productInCart.title,
-      'debug_mode': true
     });
   } else {
     const product = products.find((item) => item.id === productId);
@@ -153,7 +152,6 @@ const addToCart = (productId) => {
       'event_category': 'interactions on products',
       'event_label': 'adding products to cart',
       'value': product.title,
-      'debug_mode': true
     });
   }
   localStorage.setItem("cart", JSON.stringify(cart));
