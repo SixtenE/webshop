@@ -26,3 +26,5 @@
 - [x] ~~Dark mode?~~
 - [ ] SEO?
 - [ ] 100 100 100 100 i Lighthouse 🎉
+
+![Google analytics screenshot](img\webshop_debugging.png)
