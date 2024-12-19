@@ -27,7 +27,7 @@
 - [ ] 100 100 100 100 i Lighthouse 🎉
 
  ## Google analytics
-![Google analytics screenshot](img\webshop_debugging.png)
+![Google analytics screenshot](./img/webshop_debugging.png)
 
 ## Reflektioner
 Det finns många fördelar med att använda sig av Google analytics, man får mycket information ifrån användarens beteende på sidan och hur användaren interagerar med sidan. Man kan mäta användarens engagemang samt hur länge dom är aktiva på sidan.
